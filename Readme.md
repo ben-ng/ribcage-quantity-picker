@@ -1,110 +1,38 @@
-ribcage-picker
+ribcage-quantity-picker
 ==============
 
-This is a widget that mimics the native "slot-machine" style pickers now ubiquitious on our mobile devices.
+This is a widget that mimics the native "slot-machine" style pickers now ubiquitious on our mobile devices. It extends from [`ribcage-picker`](http://npmjs.org/package/ribcage-picker).
 
-`ribcage-picker` is a [Backbone](http://backbonejs.org/) view, best served with the other great components in the [ribcage-ui](https://github.com/Techwraith/ribcage-ui) collection.
-
-Demo
-----
-
-[Try the demo](http://ben-ng.github.io/ribcage-picker/)
-
-Screenshot
-----------
-![Demo Screenshot](http://ben-ng.github.io/ribcage-picker/screencap.jpg)
+`ribcage-quantity-picker` is a [Backbone](http://backbonejs.org/) view, best served with the other great components in the [ribcage-ui](https://github.com/Techwraith/ribcage-ui) collection.
 
 Usage
 -----
 
-#### Creating A Picker
+#### Creating A Quantity Picker
 
 ```js
-var Picker = require('ribcage-picker')
+var Picker = require('ribcage-quantity-picker')
   , picker;
 
 picker = new Picker({
-  slots: {
-    quantity: {
-      values: {1: .5, 2: 1, 3: 1.5, 4: 2}
-    , defaultKey: 5
-    }
-  , unit: {
-      values: {
-        kilograms: 'kg'
-      , pounds: 'lb'
-      }
-    , style: 'left'
-    }
-  }
+  measure: 'mass'
 });
 ```
 
-#### Changing Slot Values
-
-What if we wanted the quantity slot to change in response to the selected unit? Imperial units usually have fractional quantities, while Metric units have decimal quantities.
-
-We can use `.setSlot` for this.
-
+### Listening for changes
 ```js
-picker.setSlot('quantity', {
-  values: {
-    1: '1/2'
-  , 2: '1'
-  , 3: '1-1/2'
-  , 4: '2'
-  }
-, style: 'left' // You can also change the style if you'd like
-                // But you can't change the defaultKey anymore
-                // After all, it only makes sense to use it the first time the picker is opened
+picker.on('change', function (selection) {
+  // Do something with the current selection
+  console.log(selection.quantity.value);  // e.g. 100
+  console.log(selection.division.value);  // e.g. 0.25
+  console.log(selection.unit.value);      // e.g. 'kg'
 });
 ```
-
-When `setSlot` is used, `ribcage-picker` will attempt to scroll the slot to a value with the same key. If it can't find a matching key, it will try to scroll the slot as close as possible to the physical location of the last selected row.
-
-In this example, switching between the fractional and decimal units will be seamless, because the keys correspond to equivalent values.
-
-#### Listening For Changes
-
-Pickers emit `change` events. You can listen for a specific slot with `change:<slot>`.
-
-```js
-// Render your view when the picker changes in value
-this.listenTo(picker, 'change', this.render);
-
-// Change one slot in response to another one changing
-this.listenTo(picker, 'change:unit', function (selection) {
-  // Selection is {key: <something>, value: <something>}
-  switch(selection.value) {
-    'lb':
-      this.picker.setSlot('quantity', {values: fractionalValues});
-      break;
-
-    'kg':
-      this.picker.setSlot('quantity', {values: decimalValues});
-      break;
-  }
-});
-```
-
-Limitations
------------
-
-This widget will **only** work on iOS and Android devices. While you can use it standalone just fine, I intended it to be a building block of more robust, responsive widgets that work on all devices.
-
-Is `ribcage-picker` missing a feature you need? Send me a PR!
 
 License & Acknowledgements
 --------------------------
 
-The first version of this widget was written over four years ago by the amazing [Matteo Spinelli](http://cubiq.org/spinning-wheel-on-webkit-for-iphone-ipod-touch).
-
-Without the original project, `ribcage-picker` would have been significantly harder to put together.
-
-A shoutout to @techwraith, without whom `ribcage-ui` and this widget wouldn't have happened.
-
-
-Copyright (c) 2013 Ben Ng, http://benng.me & Matteo Spinelli, http://cubiq.org/
+Copyright (c) 2013 Ben Ng, http://benng.me
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
