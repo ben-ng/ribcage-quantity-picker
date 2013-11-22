@@ -5,9 +5,9 @@
   "main": "picker.js",
   "dependencies": {
     "lodash.foreach": "2.3.x",
-    "lodash.bind": "2.3.x",
     "convert-units": "0.0.x",
     "hbsfy": "1.0.x",
+    "vulgarities": "0.0.x",
     "gcd": "0.0.x"
   },
   "devDependencies": {
