@@ -2,6 +2,7 @@ var QuantityPicker = require('../../quantityPicker')
   , Ribcage = require('ribcage-view')
   , Backbone = require('backbone')
   , $ = require('jquery-browserify')
+  , phantom = require('phantom-limb')
   , AppView
   , App;
 
@@ -11,9 +12,6 @@ AppView = Ribcage.extend({
   template: require('./app.hbs')
 , quantity: 50
 , unit: 'lb'
-, events: {
-    'click a.pick': 'openPicker'
-  }
 , afterInit: function () {
     var self = this;
 
@@ -43,11 +41,6 @@ AppView = Ribcage.extend({
       value: pickerVals.quantity.value + pickerVals.division.value
     , unit: pickerVals.unit.value
     };
-  }
-, openPicker: function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.picker.show();
   }
 });
 

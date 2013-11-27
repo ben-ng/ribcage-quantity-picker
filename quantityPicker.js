@@ -31,7 +31,10 @@ QuantityPicker = function (opts) {
   , defaultKey: 'g'
   };
 
-  picker = new Picker({slots: slots});
+  picker = new Picker({
+    slots: slots
+  , offsetParent: opts.offsetParent
+  });
 
   return picker;
 };
