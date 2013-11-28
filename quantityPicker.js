@@ -2,6 +2,8 @@ var Picker = require('ribcage-picker')
   , convert = require('convert-units')
   , each = require('lodash.foreach')
   , vulgarities = require('vulgarities')
+  , fracCharFor = require('vulgarities/charFor')
+  , ratio = require('ratio')
   , QuantityPicker
   , createQuantities
   , createDivisions
@@ -15,20 +17,35 @@ QuantityPicker = function (opts) {
     , range = opts.range || {low: 0, high: 1000}
     , measure = opts.measure || convert().measures().pop()
     , quantities
-    , units;
+    , units
+    , splitDefaultQuantity
+    , parsedDivision
+    , defaultQuantity = 1
+    , defaultDivision = '--';
+
+  if(opts.defaultQuantity) {
+    splitDefaultQuantity = ('' + opts.defaultQuantity).split('.');
+    defaultQuantity = parseInt(splitDefaultQuantity[0], 10);
+
+    if(splitDefaultQuantity.length > 1) {
+      parsedDivision = parseInt(splitDefaultQuantity[1], 10);
+      defaultDivision = ratio(parsedDivision / (10 * splitDefaultQuantity[1].length)).toString();
+    }
+  }
 
   slots.quantity = {
     values: createQuantities(range.low, range.high)
-  , defaultKey: '100'
+  , defaultKey: defaultQuantity
   };
 
   slots.division = {
     values: createDivisions()
+  , defaultKey: defaultDivision != '--' ? fracCharFor.apply(this, defaultDivision.split('/')) : '--'
   };
 
   slots.unit = {
     values: createUnits(measure)
-  , defaultKey: 'g'
+  , defaultKey: opts.defaultUnit
   };
 
   picker = new Picker({
