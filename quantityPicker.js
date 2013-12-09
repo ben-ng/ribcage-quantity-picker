@@ -16,6 +16,7 @@ QuantityPicker = function (opts) {
     , picker
     , range = opts.range || {low: 0, high: 1000}
     , measure = opts.measure || convert().measures().pop()
+    , eachAlias = opts.eachAlias
     , quantities
     , units
     , splitDefaultQuantity
@@ -44,7 +45,7 @@ QuantityPicker = function (opts) {
   };
 
   slots.unit = {
-    values: createUnits(measure)
+    values: createUnits(measure, eachAlias)
   , defaultKey: opts.defaultUnit
   };
 
@@ -82,15 +83,22 @@ createDivisions = function () {
   return divisions;
 };
 
-createUnits = function (measure) {
-  var measures = {}
-    , units = convert().possibilities(measure);
+createUnits = function (measure, eachAlias) {
+  if(eachAlias) {
+    var ret = {};
+    ret[eachAlias] = 'ea';
+    return ret;
+  }
+  else {
+    var measures = {}
+      , units = convert().possibilities(measure);
 
-  each(units, function (unit) {
-    measures[unit] = unit;
-  });
+    each(units, function (unit) {
+      measures[unit] = unit;
+    });
 
-  return measures;
+    return measures;
+  }
 };
 
 module.exports = QuantityPicker;
