@@ -1,6 +1,6 @@
 {
   "name": "ribcage-quantity-picker",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A iOS-inspired quantity/unit UIPickerView for ribcage-ui",
   "main": "quantityPicker.js",
   "dependencies": {
