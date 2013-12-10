@@ -10,7 +10,7 @@
     "vulgarities": "0.0.x",
     "gcd": "0.0.x",
     "ratio": "0.0.x",
-    "ribcage-picker": "0.1.x"
+    "ribcage-picker": "0.2.x"
   },
   "devDependencies": {
     "browserify": "2.35.x",
