@@ -1,6 +1,6 @@
 {
   "name": "ribcage-quantity-picker",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A iOS-inspired quantity/unit UIPickerView for ribcage-ui",
   "main": "quantityPicker.js",
   "dependencies": {
@@ -9,12 +9,12 @@
     "hbsfy": "1.0.x",
     "vulgarities": "0.0.x",
     "gcd": "0.0.x",
-    "ratio": "0.0.x"
+    "ratio": "0.0.x",
+    "ribcage-picker": "0.1.x",
   },
   "devDependencies": {
     "browserify": "2.35.x",
     "ribcage-view": "0.0.x",
-    "ribcage-picker": "0.1.x",
     "jquery-browserify": "1.8.x",
     "phantom-limb": "0.0.x",
     "backbone": "1.0.x",
