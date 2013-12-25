@@ -17,12 +17,11 @@ QuantityPicker = function (opts) {
     , range = opts.range || {low: 0, high: 1000}
     , measure = opts.measure || convert().measures().pop()
     , eachAlias = opts.eachAlias
-    , quantities
-    , units
     , splitDefaultQuantity
     , parsedDivision
     , defaultQuantity = 1
-    , defaultDivision = '--';
+    , defaultDivision = '--'
+    , divKey;
 
   if(opts.defaultQuantity) {
     splitDefaultQuantity = ('' + opts.defaultQuantity).split('.');
@@ -39,9 +38,11 @@ QuantityPicker = function (opts) {
   , defaultKey: defaultQuantity
   };
 
+  divKey = opts.vulgar ? fracCharFor.apply(this, defaultDivision.split('/')) : defaultDivision;
+
   slots.division = {
-    values: createDivisions()
-  , defaultKey: defaultDivision != '--' ? fracCharFor.apply(this, defaultDivision.split('/')) : '--'
+    values: createDivisions(opts.vulgar)
+  , defaultKey: defaultDivision != '--' ? divKey : '--'
   };
 
   slots.unit = {
@@ -70,14 +71,20 @@ createQuantities = function (low, high) {
   return quantities;
 };
 
-createDivisions = function () {
+createDivisions = function (vulgar) {
   var divisions = {
     '--': 0
   };
 
   each(vulgarities, function (code, key) {
     var frac = key.split('/');
-    divisions[code] = frac[0]/frac[1];
+
+    if(vulgar === true) {
+      divisions[code] = frac[0]/frac[1];
+    }
+    else {
+      divisions[frac[0] + '/' + frac[1]] = frac[0]/frac[1];
+    }
   });
 
   return divisions;

@@ -16,6 +16,10 @@ var Picker = require('ribcage-quantity-picker')
 
 picker = new Picker({
   measure: 'mass'
+, vulgar: true            // Not all devices support vulgar fractions (i.e. Android)
+                          // Thus, this is disabled by default.
+, defaultQuantity: 1.25   // Will be massaged into the closest possible fraction
+, defaultUnit: 'kg'
 });
 ```
 

@@ -1,25 +1,22 @@
 {
   "name": "ribcage-quantity-picker",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A iOS-inspired quantity/unit UIPickerView for ribcage-ui",
   "main": "quantityPicker.js",
   "dependencies": {
-    "lodash.foreach": "2.3.x",
-    "convert-units": "0.0.x",
-    "hbsfy": "1.0.x",
-    "vulgarities": "0.0.x",
-    "gcd": "0.0.x",
-    "ratio": "0.0.x",
-    "ribcage-picker": "0.2.x"
+    "ribcage-picker": "~0.3.3",
+    "lodash.foreach": "~2.4.1",
+    "convert-units": "~0.0.7",
+    "hbsfy": "~1.0.0",
+    "vulgarities": "~0.0.2",
+    "gcd": "~0.0.0",
+    "ratio": "~0.0.1"
   },
   "devDependencies": {
-    "browserify": "2.35.x",
-    "ribcage-view": "0.0.x",
-    "jquery-browserify": "1.8.x",
-    "phantom-limb": "0.0.x",
-    "backbone": "1.0.x",
-    "mkdirp": "0.3.x",
-    "cpr": "0.1.x"
+    "browserify": "~3.14.1",
+    "ribcage-view": "0.0.12",
+    "mkdirp": "~0.3.5",
+    "cpr": "~0.1.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
