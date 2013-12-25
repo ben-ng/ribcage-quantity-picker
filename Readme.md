@@ -5,6 +5,11 @@ This is a widget that mimics the native "slot-machine" style pickers now ubiquit
 
 `ribcage-quantity-picker` is a [Backbone](http://backbonejs.org/) view, best served with the other great components in the [ribcage-ui](https://github.com/Techwraith/ribcage-ui) collection.
 
+Demo
+----
+
+[Try the demo](http://ben-ng.github.io/ribcage-quantity-picker/)
+
 Usage
 -----
 
@@ -16,10 +21,10 @@ var Picker = require('ribcage-quantity-picker')
 
 picker = new Picker({
   measure: 'mass'
-, vulgar: true            // Not all devices support vulgar fractions (i.e. Android)
-                          // Thus, this is disabled by default.
 , defaultQuantity: 1.25   // Will be massaged into the closest possible fraction
 , defaultUnit: 'kg'
+, vulgar: true            // Not all devices support vulgar fractions (i.e. Android)
+                          // This is disabled by default. Turn on for a prettier interface.
 });
 ```
 
