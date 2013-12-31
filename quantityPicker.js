@@ -53,6 +53,7 @@ QuantityPicker = function (opts) {
   picker = new Picker({
     slots: slots
   , offsetParent: opts.offsetParent
+  , disableToggle: opts.disableToggle
   });
 
   return picker;
