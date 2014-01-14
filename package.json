@@ -1,10 +1,10 @@
 {
   "name": "ribcage-quantity-picker",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "A iOS-inspired quantity/unit UIPickerView for ribcage-ui",
   "main": "quantityPicker.js",
   "dependencies": {
-    "ribcage-picker": "~0.4.0",
+    "ribcage-picker": "~0.5.0",
     "lodash.foreach": "~2.4.1",
     "convert-units": "~0.0.7",
     "hbsfy": "~1.0.0",
